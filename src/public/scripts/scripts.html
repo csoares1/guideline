@@ -1,0 +1,115 @@
+﻿<!--Begin Page Content-->
+<div class="container-fluid">
+
+    <!--Page Heading-->
+    <h1 class="h3 mb-4 text-gray-800"></h1>
+    <h4>  </h4>
+    <div class="row">
+
+        <div class="col-lg-10">
+
+            <div class="card shadow mb-5">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">
+                        <a href="#" class="btn btn-success btn-circle btn-sm">
+                            <i class="fas fa-check"></i>
+                        </a>
+                    </h6>
+                </div>
+                <div class="card-body">
+                    <ol>
+                        <li>
+                            <p> No início do Script, antes do USE, para qualquer tipo de script, devemos colocar comentários para o script, independente da existência de comentários de objetos que estão nele, pois cada objeto compilado terá o seu, como veremos adiante. Nessa área também pode ser declarado algum SET comum ao script. </p>
+                        </li>
+                        <li>
+                            <p>
+                              <p>   /******************************************************************************* </p>
+
+                                  <p>  -- Funcao:   Exemplo de criação de estruturas </p>
+                                  <p>  -- Empresa:  Accenture </p>
+                                  <p>  -- Base:     MSSQL </p>
+                                  <p>  -- Autor:    C.DE.SOUZA.SOARES (Carla Regina de Souza Soares) </p>
+                                <p>    -- Data:     03/03/2020 </p>
+
+                              <p>   ********************************************************************************/ </p>
+                            </p>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+          </div>
+
+          <div class="col-lg-10">
+
+              <div class="card shadow mb-5">
+                  <div class="card-header py-3">
+                      <h6 class="m-0 font-weight-bold text-primary">
+                          <a href="#" class="btn btn-success btn-circle btn-sm">
+                              <i class="fas fa-check"></i>
+                          </a>
+                      </h6>
+                  </div>
+                  <div class="card-body">
+                      <ol>
+                          <li>
+                            <p> No próximo bloco criamos as tabelas. Para criação de constraints, JAMAIS criar no mesmo comando de criação da tabela. A criação deve ser feita separadamente de modo a garantir que a constraint será criada como nome no padrão  </p>
+                          </li>
+                          <li>
+                            <p> TABLES devem ter um IF NOT EXISTS e normalmente não há DROP de tabelas ANTES, pois isso implicaria em perda dos dados. Segue abaixo um exemplo de um CREATE TABLE:</p>
+                          </li>
+                          <li>
+                              <p>
+                                <p>   IF NOT EXISTS (SELECT TOP 1 1 FROM sys.objects WHERE name = 'Usuario' AND type = 'U') </p>
+                                <p>   CREATE TABLE [dbo].[Usuario] ( </p>
+                                <p>      [Seql_Usuario]        [int]   IDENTITY (1, 1)  NOT NULL , </p>
+                                <p>      [Num_CNPJSacado]      [decimal] (14, 0)        NOT NULL , </p>
+                                  <p>    [Nome_Usuario]        [varchar] (100)          NOT NULL , </p>
+                                  <p>    [Numdor_LogonUltAlt]  [int]                    NOT NULL , </p>
+                                  <p>    [Inst_UltAlt]         [datetime]               NOT NULL , </p>
+                                  <p>    [Cod_Carteira]        [tinyint]                NOT NULL , </p>
+                                  <p>    [Tm_ContrAlterac]     [timestamp]              NOT NULL </p>
+                                <p>   ) ON [PRIMARY] </p>
+                              <p>     GO </p>
+
+                              </p>
+                          </li>
+                      </ol>
+                  </div>
+              </div>
+            </div>
+
+            <div class="col-lg-10">
+
+                <div class="card shadow mb-5">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">
+                            <a href="#" class="btn btn-success btn-circle btn-sm">
+                                <i class="fas fa-check"></i>
+                            </a>
+                        </h6>
+                    </div>
+                    <div class="card-body">
+                        <ol>
+                            <li>
+                              <p> Normalmente estas são clusterizadas e isso dá um considerável ganho de performance se feito antes da população, além de a população normalmente precisar desses objetos criados para que rode em tempo aceitável.   </p>
+                            </li>
+                            <li>
+                                  <p>   IF NOT EXISTS (SELECT TOP 1 1 FROM sys.objects WHERE name = 'PK_Usuario' AND type = 'PK') </p>
+                                  <p>     ALTER TABLE [dbo].[Usuario] WITH NOCHECK ADD </p>
+                                    <p>      CONSTRAINT [PK_Usuario] PRIMARY KEY CLUSTERED </p>
+                                      <p>    ( </p>
+                                        <p>     [Seql_Usuario] </p>
+                                        <p>  ) ON [PRIMARY] </p>
+                                    <p>   GO   </p>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+              </div
+
+        </div>
+
+    </div>
+
+</div>
+<!--//.container-fluid-->
