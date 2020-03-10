@@ -32,7 +32,7 @@ function routeConfig ($stateProvider) {
          templateUrl: 'src/public/scripts/scripts.html'
       })
       .state('public.prefixo', {
-          url: '/scripts',
+          url: '/prefixo',
           templateUrl: 'src/public/prefixo/prefixo.html'
        })
     //.state('public.menu', {
